@@ -25,8 +25,28 @@ class Database {
         });
     }
     static async FindUserById(id: number): Promise<UserModel> {
-        const users: UserModel[] = await this.AllUser();
+        let users: UserModel[] = await this.AllUser();
+        const matchs: MathModel[] = await this.AllMatch();
         const result: UserModel = users.find((x) => x.id === id);
+        users = users.map((userItem) => {
+            userItem.score = 0;
+            const userMatch = matchs.filter((x) => x.userId == userItem.id);
+            if (userMatch.length > 0 && userMatch != null && userMatch != undefined) {
+                userMatch.forEach((matchItem) => {
+                    if (userItem.score < matchItem.score) {
+                        userItem.score = matchItem.score;
+                    }
+                });
+            }
+            return userItem;
+        });
+        users.sort((a, b) => b.score - a.score);
+        let index: number = users.findIndex(item=>item.id === id);
+        if(index === -1){
+            return null;
+        }
+        result.score = users[index].score?users[index].score:0;
+        result.rate = `${ index + 1 }/${users.length}`
         return result;
     }
 
@@ -120,10 +140,16 @@ class Database {
     static async AddUsers(userInput: UserModel): Promise<UserModel> {
         const dataString: string = await this.ReadFile('database.user.json');
         const users: UserModel[] = JSON.parse(dataString);
+        console.log(users);
         if (users.find((x) => x.email === userInput.email) != null) {
             return null;
         }
-        userInput.id = users[users.length - 1].id + 1;
+        if(users.length > 0){
+            userInput.id = users[users.length - 1].id + 1;
+        }
+        else{
+            userInput.id = 1;
+        }
         userInput.avatarUrl = 'default.jpg';
         users.push(userInput);
         const resultWRight: boolean = await this.WriteFile('database.user.json', JSON.stringify(users));

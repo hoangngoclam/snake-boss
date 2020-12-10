@@ -25,11 +25,6 @@ class App {
     }
     private assets() {
         this.app.use(express.static('public'));
-        this.app.use((req, res, next) => {
-            res.header('Access-Control-Allow-Origin', '*');
-            res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-            next();
-        });
     }
     private viewEngine() {
         this.app.set('views', path.join(__dirname, './views'));

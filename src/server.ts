@@ -8,4 +8,5 @@ const app = new App({
     controllers: [new HomeController(), new UserController(), new MatchController()],
     middleWares: [bodyParser.json(), bodyParser.urlencoded({ extended: true }), loggerMiddleware, corsPolicyMiddleware],
 });
+
 app.Listen();

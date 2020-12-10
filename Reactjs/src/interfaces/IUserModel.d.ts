@@ -4,4 +4,6 @@ interface IUserModel{
     password: string,
     id: number,
     avatarUrl: string,
+    score: number,
+    rate?:string
 }
