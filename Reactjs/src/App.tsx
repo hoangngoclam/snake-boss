@@ -9,56 +9,48 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect
 } from "react-router-dom";
-import API from './helper';
-function App() {
-  function requireAuth(nextState: { location: { pathname: any; }; }, 
-    replace: (arg0: { pathname: string; state: { nextPathname: any; }; }) => void, next: () => void) {
-      let userStore = localStorage.getItem("user");
-      if(!userStore){
-        replace({
-          pathname: "/login",
-          state: {nextPathname: nextState.location.pathname}
-        });
-      }
-      else{
-        API.Post("http://localhost:5000/user/login",JSON.parse(userStore))
-        .then(data=>{
-          
-        })
-      }
-    let data: IDataReceiveLogin;
-     
-    if (!authenticated) {
-      replace({
-        pathname: "/login",
-        state: {nextPathname: nextState.location.pathname}
-      });
-    }
-    next();
+
+function requireAuth() {
+  let userStore = localStorage.getItem("user");
+  if(!userStore){
+    return false
   }
+  return true
+}
+
+
+ function App(){
+  let auth = requireAuth()
   return (
     <Router>
-      <Switch>
-        <Route path="/" exact>
-          <IndexPage />
-        </Route>
-        <Route path="/login" exact>
-          <LoginPage />
-        </Route>
-        <Route path="/register" exact>
-          <RegisterPage />
-        </Route>
+      {
+        auth?
+        <Switch>
         <Route path="/game" exact onEnter={requireAuth}>
           <GamePage />
         </Route>
-        <Route path="/profile" exact>
+        <Route path="/profile" exact onEnter={requireAuth}>
           <ProfilePage />
         </Route>
-        <Route path="/user-admin" exact>
+        <Route path="/user-admin" exact onEnter={requireAuth}>
           <UserAdminPage />
         </Route>
-      </Switch>
+        <Route path="/" >
+          <IndexPage />
+        </Route>
+      </Switch>:
+        <Switch>
+          <Route path="/register" exact>
+            <RegisterPage />
+          </Route>
+          <Route path="/">
+            <LoginPage />
+          </Route>
+        </Switch>
+      }
+      
     </Router>
   );
 }

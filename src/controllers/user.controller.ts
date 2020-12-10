@@ -23,19 +23,28 @@ class UserController implements IControllerBase {
     }
     public initRoutes() {
         this.router.get('/user-rate', this.getUserRate);
-        this.router.get('/user', this.get);
+        this.router.get('/user/info', this.get);
         this.router.post('/user/register', this.post);
         this.router.post('/user/login', this.login);
         this.router.post('/user/edit', upload.single('avatar'), this.edit);
+        this.router.get('/user/:id', this.getProfile);
     }
+
     private async getUserRate(req: Request, res: Response) {
         const users: UserModel[] = await Database.GetUserRate();
         res.json({ users: users, success: true });
     }
+    private async getProfile(req: Request, res: Response) {
+        let id: string = req.params.id;
+        const user: UserModel = await Database.FindUserById(parseInt(id));
+        res.json({ user: user, success: true });
+    }
+
     private async get(req: Request, res: Response) {
         const users: UserModel[] = await Database.AllUser();
         res.json({ users: users, success: true });
     }
+
     private post = async (req: Request, res: Response) => {
         const newUser: UserModel = new UserModel();
         const displayName: string = req.body.displayName;
@@ -53,6 +62,7 @@ class UserController implements IControllerBase {
         }
         res.json({ user: resultInsert, success: true, validate: true });
     };
+
     private login = async (req: Request, res: Response) => {
         const email: string = req.body.email;
         const password: string = req.body.password;
@@ -66,6 +76,7 @@ class UserController implements IControllerBase {
         }
         res.json({ user: user, success: true, validate: true });
     };
+
     private edit = async (req: Request, res: Response) => {
         console.log(req.file);
         let avatarUrl: string = null;

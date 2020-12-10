@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React,{useState} from "react";
 import { InputComponent,ButtonSubmitComponent } from './../components/index';
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import {Alert} from 'reactstrap';
 import API from './../helper';
 
@@ -9,7 +9,6 @@ export default function LoginPage(){
     const [errorLabel,setError] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    let history =  useHistory();
     const onSubmitClick = (_event: any)=>{
         let data:IDataPostLogin = {email:email, password: password};
         API.Post("http://localhost:5000/user/login",data)
@@ -23,7 +22,7 @@ export default function LoginPage(){
             }
             else{
                 localStorage.setItem("user",JSON.stringify(dataResult.user))
-                history.push("/");
+                window.location.reload();
             }
         })
         .catch(error=>{
@@ -32,12 +31,14 @@ export default function LoginPage(){
     }
     const onEmailChange = (_event: any)=>{
         setEmail(_event.target.value);
+        setError("");
     }
     const onPasswordChange = (_event: any)=>{
         setPassword(_event.target.value);
+        setError("");
     }
     return(
-        <div className=" w-full lg:w-2/5 md:w-2/5 sm:w-4/5 mx-auto items-center flex justify-center h-screen">
+        <div className=" w-full lg:w-2/5 md:w-2/5 sm:w-4/5 mx-auto items-center flex justify-center h-screen" >
             <div className="py-10 px-12 border border-gray-400">
                 <div className=" flex items-center justify-center pb-3">
                     <img className="w-2/6 rounded-full" src="/imgs/logo.jpg" alt="My logo"/>
@@ -50,7 +51,7 @@ export default function LoginPage(){
         
                 <div className="flex items-center mb-6 -mt-4">
                     <div className="flex mr-auto">
-                        <Link to="/register" className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Tạo tài khoản</Link>
+                        <Link to="/register" className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Create account</Link>
                     </div>
                     <div className="flex ml-auto">
                     <Link to="#" className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Forgot Your Password?</Link>

@@ -1,6 +1,6 @@
 import React,{ FC } from "react";
 
-export default function Input({id, name, type, placeholder, label, icon: Icon,value, onChangeEvent}:IInputComponent){
+export default function Input({id, name, type, placeholder, label, icon: Icon,value, onChangeEvent }:IInputComponent){
     return(
         <div className="flex flex-col mb-6">
             <label htmlFor={id} className="mb-1 text-xs sm:text-sm tracking-wide text-gray-600">{label} :</label>
