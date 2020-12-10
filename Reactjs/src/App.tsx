@@ -10,54 +10,18 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
-import API from './helper';
+import ProtectedRoute from './components/protectedRoute.component';
 function App() {
-  function requireAuth(nextState: { location: { pathname: any; }; }, 
-    replace: (arg0: { pathname: string; state: { nextPathname: any; }; }) => void, next: () => void) {
-      let userStore = localStorage.getItem("user");
-      if(!userStore){
-        replace({
-          pathname: "/login",
-          state: {nextPathname: nextState.location.pathname}
-        });
-      }
-      else{
-        API.Post("http://localhost:5000/user/login",JSON.parse(userStore))
-        .then(data=>{
-          
-        })
-      }
-    let data: IDataReceiveLogin;
-     
-    if (!authenticated) {
-      replace({
-        pathname: "/login",
-        state: {nextPathname: nextState.location.pathname}
-      });
-    }
-    next();
-  }
+  
   return (
     <Router>
       <Switch>
-        <Route path="/" exact>
-          <IndexPage />
-        </Route>
-        <Route path="/login" exact>
-          <LoginPage />
-        </Route>
-        <Route path="/register" exact>
-          <RegisterPage />
-        </Route>
-        <Route path="/game" exact onEnter={requireAuth}>
-          <GamePage />
-        </Route>
-        <Route path="/profile" exact>
-          <ProfilePage />
-        </Route>
-        <Route path="/user-admin" exact>
-          <UserAdminPage />
-        </Route>
+        <Route path="/login" component={LoginPage} exact />
+        <Route path="/register" component={RegisterPage} exact />
+        <ProtectedRoute path="/" component={IndexPage} exact />
+        <ProtectedRoute path="/game" component={GamePage} exact />
+        <ProtectedRoute path="/profile" component={ProfilePage} exact />
+        <ProtectedRoute path="/user-admin" component={UserAdminPage} exact />
       </Switch>
     </Router>
   );
