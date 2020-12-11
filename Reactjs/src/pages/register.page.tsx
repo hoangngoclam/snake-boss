@@ -65,7 +65,7 @@ export default function RegisterPage(){
     
                         <div className=" flex items-center justify-center pb-3 flex-col">
                             <img className="w-1/5 rounded-full" src="./imgs/logo.jpg" alt="My logo"/>
-                            <h1 className="text-xl pt-2 font-bold text-gray-600">Đăng ký</h1>
+                            <h1 className="text-xl pt-2 font-bold text-gray-600">Create new accout</h1>
                         </div>
                         <InputComponent icon={()=>(<i className="fas fa-user"></i>)} label="Name" name="name" 
                             id="name" type="text" placeholder="Type your name" value={name} onChangeEvent={onNameChange} />

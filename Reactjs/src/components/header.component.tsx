@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import { Link } from "react-router-dom";
 import DropdownComponent from "./dropdown.component";
 function DropdownItems(){
@@ -19,6 +19,11 @@ function DropdownItems(){
     )
 }
 export default function HeaderComponent(){
+    const [avatarUrl, setAvatar] = useState('/imgs/default.jpg');
+    useEffect(()=>{
+        let currentUser: IUserModel = JSON.parse(localStorage.getItem('user') || 'null');
+        setAvatar(`http://localhost:5000/imgs/${currentUser.avatarUrl}`);
+    },[]);
     return(
         <header className="w-full">
             <nav className="flex flex-row justify-between bg-pink-500">
@@ -27,7 +32,10 @@ export default function HeaderComponent(){
                 </Link>
                 <div className="user flex flex-row items-center my-2 mx-5">
                     <div className=" w-12 h-12 rounded-full overflow-hidden relative">
-                        <img src="/imgs/default.jpg" className="w-full h-full object-cover object-center absolute z-0" alt="avatar"/>
+                        <img src={avatarUrl} className="w-full h-full object-cover object-center absolute z-0" alt="avatar"/>
+                    </div>
+                    <div>
+                        <p className="text-md font-bold ml-2">sdfsdf</p>
                     </div>
                     <DropdownComponent dropdownItems={DropdownItems}/>
                 </div>

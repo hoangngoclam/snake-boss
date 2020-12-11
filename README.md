@@ -1,1 +1,47 @@
 # Business-Requirement
+
+## Require
+
+Your computer is installed with **nodejs**
+
+## Installation
+**run install:** 
+Use the package manager [npm](https://www.npmjs.com/) to install program.
+```bash
+$ npm install
+```
+### 1. Run server
+**run server in local**
+```bash
+$ npm run dev
+```
+**build program:**
+```bash
+$ npm run build
+```
+**Run program after build:**
+```bash
+$ npm start
+```
+Server will run in port 5000
+
+### 1. Run web client
+**cd in to Reactjs folder by this command**
+```bash
+$ cd Reactjs
+```
+**Run client**
+```bash
+$ npm start
+```
+Client will run in port 3000
+## Api 
+import file **/Snake.postman_collection.json** in root to show the API
+## Route Map client
+
+ - **/index:** Game play
+ - **/login:** Login page
+ - **/register:** Create new account
+ - **/profile:** Edit profile player
+ - **/admin/login:** Login into admin page (admin/password)
+ - **/user-admin:** Page show all player create in website
