@@ -39,8 +39,8 @@ export default function LoginPage(props: any){
         setError("");
     }
     return(
-        <div className=" w-full lg:w-2/5 md:w-2/5 sm:w-4/5 mx-auto items-center flex justify-center h-screen" >
-            <div className="py-10 px-12 border border-gray-400">
+        <div className=" w-full lg:w-3/12 md:w-3/12 sm:w-10/12 mx-auto items-center flex justify-center h-screen" >
+            <div className="py-10 px-12 border border-gray-400 w-full shadow-md">
                 <div className=" flex items-center justify-center pb-3">
                     <img className="w-2/6 rounded-full" src="/imgs/logo.jpg" alt="My logo"/>
                 </div>
@@ -55,7 +55,7 @@ export default function LoginPage(props: any){
                         <Link to="/register" className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Create account</Link>
                     </div>
                     <div className="flex ml-auto">
-                    <Link to="#" className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Forgot Your Password?</Link>
+                    <Link to="#" onClick={()=>{alert("This function is developed")}} className="inline-flex text-xs sm:text-sm text-blue-500 hover:text-blue-700">Forgot Your Password?</Link>
                     </div>
                 </div>
                 {
