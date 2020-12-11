@@ -11,11 +11,11 @@ Use the package manager [npm](https://www.npmjs.com/) to install program.
 $ npm install
 ```
 ### 1. Run server
-**run server in local**
+**Run server in local**
 ```bash
 $ npm run dev
 ```
-**build program:**
+**Build program:**
 ```bash
 $ npm run build
 ```
@@ -26,11 +26,11 @@ $ npm start
 Server will run in port 5000
 
 ### 1. Run web client
-**cd in to Reactjs folder by this command**
+**Cd in to Reactjs folder by this command**
 ```bash
 $ cd Reactjs
 ```
-**install package**
+**Install package**
 ```bash
 $ npm install
 ```
@@ -40,7 +40,7 @@ $ npm start
 ```
 Client will run in port 3000
 ## Api 
-import file **/Snake.postman_collection.json** in root to show the API
+Import file **/Snake.postman_collection.json** in root to show the API
 ## Route Map client
 
  - **/index:** Game play
