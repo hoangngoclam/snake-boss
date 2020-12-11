@@ -1,5 +1,5 @@
 # Business-Requirement
-
+A robotic snake built by a team of doctors to eat all the planets in the galaxy. During a battle, the snake was tied up in a giant box by a Tesix's human. The snake has a curse of "dying to live and eating the red food in the box to increase its strength if it reaches its ultimate power, it can escape the box". Your task is to transform into the boss to control and eat the energy clusters in the black box to help them get out, back with its inherent power to become world hegemony.
 ## Require
 
 Your computer is installed with **nodejs**
