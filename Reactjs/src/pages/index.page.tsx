@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import API from "../helper";
+import {API} from "../helper";
 import { DropdownComponent, HeaderComponent, PlayerItemComponent } from "../components";
-
+import Game from "./../game"
 export default function IndexPage(){
     const [users, setUsers]:[IUserModel[],Function] = useState([]);
+    const [loadGame,setLoadGame] = useState(false);
     useEffect(()=>{
         API.Get("http://localhost:5000/user-rate")
         .then((result: any)=>{
@@ -11,9 +12,20 @@ export default function IndexPage(){
             setUsers(dataResult);
         })
     },[])
+
+    const onKeyDownEvent = (_event:any)=>{
+        Game.enterKey(_event);
+    }
+
+    const onLoadGameEvent = (_event:any)=>{
+        if(loadGame == false){
+            Game.initGame();
+            setLoadGame(true);
+        }
+    }
+
     return(
-        
-        <div className=" w-full">
+       <div className=" w-full" onLoad={onLoadGameEvent} onKeyDown={onKeyDownEvent} >
         <HeaderComponent />
         <div className="content w-full flex flex-row">
             <div className="w-1/4 bg-pink-400 text-center ">
@@ -30,8 +42,14 @@ export default function IndexPage(){
                 <div className="w-full h-12 flex flex-row items-center p-3">
                     <p>Your hight score: </p> <span className="pl-2 text-2xl">300</span>
                 </div>
-                <div className="w-full h-full bg-gray-200">
-                    
+                <div className="w-full h-full bg-gray-200 text-center">
+                    <h1>Simple Snake</h1>
+                    <button id="play" className="btn btn-primary">Play</button>
+                    <div className="best-score">
+                        Best score: <span> 0</span>
+                    </div>
+                    <h1 id="score">0</h1>
+                    <div id="board"></div>
                 </div>
             </div>
         </div>

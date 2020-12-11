@@ -1,5 +1,5 @@
 import axios from 'axios';
-export default class API{
+export class API{
     static Get(url: string): Promise<any>{
         return axios.get(url)
     }

@@ -18,13 +18,13 @@ function DropdownItems(){
         </div>
     )
 }
-export default function PlayerItem(){
+export default function HeaderComponent(){
     return(
         <header className="w-full">
             <nav className="flex flex-row justify-between bg-pink-500">
-                <a className="logo my-2 mx-5 hover:opacity-90 " href="#">
+                <Link className="logo my-2 mx-5 hover:opacity-90 " to="/">
                     <img src="/imgs/logo.jpg" className="w-12 rounded-full" alt="Logo"/>
-                </a>
+                </Link>
                 <div className="user flex flex-row items-center my-2 mx-5">
                     <div className=" w-12 h-12 rounded-full overflow-hidden relative">
                         <img src="/imgs/default.jpg" className="w-full h-full object-cover object-center absolute z-0" alt="avatar"/>

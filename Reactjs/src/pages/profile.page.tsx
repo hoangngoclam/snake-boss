@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import { ButtonSubmitComponent, HeaderComponent, InputComponent } from "../components";
-import API from "../helper";
+import {API} from "../helper";
 import {Alert} from 'reactstrap';
 
 export default function ProfilePage(props: any){

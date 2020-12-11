@@ -5,12 +5,14 @@ import IndexPage from './pages/index.page';
 import UserAdminPage from './pages/useradmin.page'
 import GamePage from './pages/game.page';
 import ProfilePage from './pages/profile.page';
+import AdminLoginPage from './pages/AdminLogin.page';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
 } from "react-router-dom";
 import ProtectedRoute from './components/protectedRoute.component';
+import ProtectedRouteAdmin from './components/ProtectedRouteAdmin.components';
 function App() {
   
   return (
@@ -21,7 +23,8 @@ function App() {
         <ProtectedRoute path="/" component={IndexPage} exact />
         <ProtectedRoute path="/game" component={GamePage} exact />
         <ProtectedRoute path="/profile" component={ProfilePage} exact />
-        <ProtectedRoute path="/user-admin" component={UserAdminPage} exact />
+        <ProtectedRouteAdmin path="/user-admin" component={UserAdminPage} exact />
+        <Route path="/admin/login" component={AdminLoginPage} exact />
       </Switch>
     </Router>
   );

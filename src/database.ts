@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import UserModel from 'models/user.model';
 import MathModel from 'models/math.model';
+import AdminModel from 'models/admin.model';
 class Database {
     static async ReadFile(fileDataName: string): Promise<string> {
         return new Promise((res, rej) => {
@@ -55,23 +56,40 @@ class Database {
         const result: UserModel = users.find((x) => x.email === email && x.password === password);
         return result;
     }
+
+    static async PostLoginAdmin(userName: string, password: string): Promise<AdminModel> {
+        const admins: AdminModel[] = await this.AllAdmin();
+        const result: AdminModel = admins.find((x) => x.userName === userName && x.password === password);
+        return result;
+    }
+
+
     static async AllMatch(): Promise<MathModel[]> {
         const dataString: string = await this.ReadFile('database.match.json');
         const matchs: MathModel[] = JSON.parse(dataString);
         return matchs;
     }
+    static async AllAdmin(): Promise<AdminModel[]> {
+        const dataString: string = await this.ReadFile('database.admin.json');
+        const admins: AdminModel[] = JSON.parse(dataString);
+        return admins;
+    }
     static async GetUserRate(): Promise<UserModel[]> {
         let users: UserModel[] = await this.AllUser();
         const matchs: MathModel[] = await this.AllMatch();
         users = users.map((userItem) => {
-            userItem.score = 0;
-            const userMatch = matchs.filter((x) => x.userId == userItem.id);
-            if (userMatch.length > 0 && userMatch != null && userMatch != undefined) {
-                userMatch.forEach((matchItem) => {
-                    if (userItem.score < matchItem.score) {
-                        userItem.score = matchItem.score;
-                    }
-                });
+            if(matchs.length > 0){
+                const userMatch = matchs.filter((x) => x.userId == userItem.id);
+                if (userMatch.length > 0 && userMatch != null && userMatch != undefined) {
+                    userMatch.forEach((matchItem) => {
+                        if (userItem.score < matchItem.score) {
+                            userItem.score = matchItem.score;
+                        }
+                    });
+                }
+            }
+            else{
+                userItem.score = 0
             }
             return userItem;
         });

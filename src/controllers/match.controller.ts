@@ -5,7 +5,7 @@ import MathModel from 'models/math.model';
 import UserModel from 'models/user.model';
 import * as path from 'path';
 
-class UserController implements IControllerBase {
+class MatchController implements IControllerBase {
     public router = express.Router();
     constructor() {
         this.initRoutes();
@@ -23,4 +23,4 @@ class UserController implements IControllerBase {
         res.json({ match: match, success: true });
     }
 }
-export default UserController;
+export default MatchController;

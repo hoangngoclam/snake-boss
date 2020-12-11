@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Alert } from "reactstrap";
 import { ButtonSubmitComponent, InputComponent } from "../components";
-import API from "../helper";
+import {API} from "../helper";
 
 export default function RegisterPage(){
     const [name,setName] = useState("");

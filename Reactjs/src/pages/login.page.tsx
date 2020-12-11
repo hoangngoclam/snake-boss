@@ -3,7 +3,7 @@ import React,{useState} from "react";
 import { InputComponent,ButtonSubmitComponent } from './../components/index';
 import {Link} from 'react-router-dom';
 import {Alert} from 'reactstrap';
-import API from './../helper';
+import {API} from './../helper';
 
 export default function LoginPage(props: any){
     const [errorLabel,setError] = useState("");
