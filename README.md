@@ -30,6 +30,10 @@ Server will run in port 5000
 ```bash
 $ cd Reactjs
 ```
+**install package**
+```bash
+$ npm install
+```
 **Run client**
 ```bash
 $ npm start
