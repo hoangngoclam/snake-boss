@@ -1,0 +1,73 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+table#custom {
+    border-collapse: collapse;
+    width: 100%;
+}
+table#custom td{
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+table#custom tr:nth-child(even){background-color: #f2f2f2;}
+
+/* table#custom tr:hover {background-color: #ddd;} */
+
+table#custom th {
+    padding-left: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+/* test */
+.hoangLam{
+    font-size: 30px;
+    background-color: black;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+html {
+    font-family: Helvetica, Arial, Helvetica, sans-serif;
+}
+#board div {
+background-color: black;
+border: 1px solid grey;
+box-sizing: border-box;
+float: left;
+width: 24px;
+height: 24px;
+}
+#board {
+width: calc(26 * 24px);
+margin: auto;
+}
+#board .snake {
+background-color: green;
+}   
+#board .apple {
+background-color: red;
+}
+.frame-button{
+    width: 600px;
+    height: 40vh;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    position: fixed;
+    bottom: 40px;
+}
+@media screen and (max-width: 750px) {
+   .frame-button{
+       display: flex;
+   }
+}
+.frame-button button{
+    width: 30vw;
+    height: 15vh;
+    font-size: 50px;
+}

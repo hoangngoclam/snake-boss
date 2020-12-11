@@ -1,0 +1,3 @@
+interface IControllerBase {
+    initRoutes(): any;
+}

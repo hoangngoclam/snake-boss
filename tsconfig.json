@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+      "sourceMap": true,
+      "target": "es6",
+      "module": "commonjs",
+      "outDir": "./dist",
+      "baseUrl": "./src",
+      "paths": {
+        "@controllers": ["controllers/index"]
+      }
+  },
+  "include": [
+      "src/**/*.ts"
+  ],
+  "exclude": [
+      "node_modules"
+  ],
+  "ts-node": {
+    "files": true
+  }
+}
