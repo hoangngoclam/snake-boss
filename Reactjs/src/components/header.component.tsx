@@ -18,12 +18,23 @@ function DropdownItems(){
         </div>
     )
 }
+function GetAvatarUrl() {
+    let currentUser: IUserModel = JSON.parse(localStorage.getItem('user') || 'null');
+    if(currentUser === null){
+        return '/img/default.jpg';
+    }
+    return `http://localhost:5000/imgs/${currentUser.avatarUrl}`;
+}
+function GetDisplayName() {
+    let currentUser: IUserModel = JSON.parse(localStorage.getItem('user') || 'null');
+    if(currentUser === null){
+        return 'undefine';
+    }
+    return currentUser.displayName;
+}
 export default function HeaderComponent(){
-    const [avatarUrl, setAvatar] = useState('/imgs/default.jpg');
-    useEffect(()=>{
-        let currentUser: IUserModel = JSON.parse(localStorage.getItem('user') || 'null');
-        setAvatar(`http://localhost:5000/imgs/${currentUser.avatarUrl}`);
-    },[]);
+    const [avatarUrl, setAvatar] = useState(GetAvatarUrl);
+    const [displayName,setDisplayName] = useState(GetDisplayName);
     return(
         <header className="w-full">
             <nav className="flex flex-row justify-between bg-pink-500">
@@ -35,7 +46,7 @@ export default function HeaderComponent(){
                         <img src={avatarUrl} className="w-full h-full object-cover object-center absolute z-0" alt="avatar"/>
                     </div>
                     <div>
-                        <p className="text-md font-bold ml-2">sdfsdf</p>
+                        <p className="text-md font-bold ml-2">{displayName}</p>
                     </div>
                     <DropdownComponent dropdownItems={DropdownItems}/>
                 </div>

@@ -29211,6 +29211,38 @@ html {
   font-size: 50px;
 }
 
+.game-area{
+  position: relative;
+  width: 600px;
+  height: 600px;
+  border: 1px solid #333;
+  margin: 50px auto;
+}
+
+.snake-dot{
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background-color: #333;
+  border: 1px solid #fff;
+}
+
+.snake-dot{
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background-color: #333;
+  border: 1px solid #fff;
+}
+
+.target-dot{
+  position: absolute;
+  width: 2%;
+  height: 2%;
+  background-color: red;
+  border: 1px solid #fff;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;
