@@ -24,10 +24,16 @@ class UserController implements IControllerBase {
     public initRoutes() {
         this.router.get('/user-rate', this.getUserRate);
         this.router.get('/user/info', this.get);
+        this.router.get('/user/check-email', this.isExistEmail);
         this.router.post('/user/register', this.post);
         this.router.post('/user/login', this.login);
         this.router.post('/user/edit', upload.single('avatar'), this.edit);
         this.router.get('/user/:id', this.getProfile);
+    }
+    private async isExistEmail(req: Request, res: Response) {
+        const email: string = req.query.email.toString();
+        const isExist: boolean = await Database.IsExistEmail(email);
+        res.json({ success: isExist });
     }
 
     private async getUserRate(req: Request, res: Response) {

@@ -15,6 +15,15 @@ class Database {
         });
     }
 
+    static async IsExistEmail(email: string): Promise<boolean> {
+        const users: UserModel[] = await this.AllUser();
+        if (users.find((user) => user.email === email)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     static async WriteFile(fileDataName: string, data: string): Promise<boolean> {
         return new Promise((res, rej) => {
             fs.writeFile(path.join(__dirname, './data/' + fileDataName), data, 'utf8', (error) => {
@@ -42,12 +51,12 @@ class Database {
             return userItem;
         });
         users.sort((a, b) => b.score - a.score);
-        let index: number = users.findIndex(item=>item.id === id);
-        if(index === -1){
+        const index: number = users.findIndex((item) => item.id === id);
+        if (index === -1) {
             return null;
         }
-        result.score = users[index].score?users[index].score:0;
-        result.rate = `${ index + 1 }/${users.length}`
+        result.score = users[index].score ? users[index].score : 0;
+        result.rate = `${index + 1}/${users.length}`;
         return result;
     }
 
@@ -63,7 +72,6 @@ class Database {
         return result;
     }
 
-
     static async AllMatch(): Promise<MathModel[]> {
         const dataString: string = await this.ReadFile('database.match.json');
         const matchs: MathModel[] = JSON.parse(dataString);
@@ -78,7 +86,7 @@ class Database {
         let users: UserModel[] = await this.AllUser();
         const matchs: MathModel[] = await this.AllMatch();
         users = users.map((userItem) => {
-            if(matchs.length > 0){
+            if (matchs.length > 0) {
                 const userMatch = matchs.filter((x) => x.userId == userItem.id);
                 if (userMatch.length > 0 && userMatch != null && userMatch != undefined) {
                     userMatch.forEach((matchItem) => {
@@ -87,9 +95,8 @@ class Database {
                         }
                     });
                 }
-            }
-            else{
-                userItem.score = 0
+            } else {
+                userItem.score = 0;
             }
             return userItem;
         });
@@ -162,10 +169,9 @@ class Database {
         if (users.find((x) => x.email === userInput.email) != null) {
             return null;
         }
-        if(users.length > 0){
+        if (users.length > 0) {
             userInput.id = users[users.length - 1].id + 1;
-        }
-        else{
+        } else {
             userInput.id = 1;
         }
         userInput.avatarUrl = 'default.jpg';

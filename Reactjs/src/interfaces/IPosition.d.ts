@@ -1,4 +1,4 @@
-interface IPosition{
-    y:number;
-    x:number;
+interface IPosition {
+    y: number;
+    x: number;
 }
