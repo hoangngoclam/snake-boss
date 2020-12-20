@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import { InputComponent,ButtonSubmitComponent } from './../components/index';
 import {Link} from 'react-router-dom';
 import {Alert} from 'reactstrap';
@@ -9,7 +9,19 @@ export default function LoginPage(props: any){
     const [errorLabel,setError] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+
     const onSubmitClick = (_event: any)=>{
+        submitForm();
+    }
+    useEffect(()=>{
+        document.onkeydown = (e:any)=>{
+            e = e || window.event;
+            if(e.keyCode === 13){
+                submitForm();
+            }
+        }
+    },[]);
+    const submitForm =()=>{
         let data:IDataPostLogin = {email:email, password: password};
         API.Post("http://localhost:5000/user/login",data)
         .then((result: any)=>{
@@ -46,7 +58,7 @@ export default function LoginPage(props: any){
                 </div>
                 <InputComponent icon={()=>(<i className="fas fa-user"></i>)} label="E-Mail" name="email" 
                 id="email" type="email" placeholder="E-Mail Address" value={email} onChangeEvent={onEmailChange} />
-
+                
                 <InputComponent icon={()=>(<i className="fas fa-lock"></i>)} label="Password" name="password" 
                 id="password" type="password" placeholder="Password" value={password} onChangeEvent={onPasswordChange}/>
         

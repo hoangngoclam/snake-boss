@@ -76,9 +76,9 @@ export default function GamePage(){
         }
         
         if(newDot.x !== targetPosition.x || newDot.y !== targetPosition.y){ // when snake don't eat anything
-            dots.shift(); 
+            dots.shift(); //delete the last dot
         }
-        else{
+        else{ // when snake eat the target
             setScore((prevScore:any)=>prevScore+=1)
             setSpeed(prevSpeed=>prevSpeed -= 5)
             GetRandomTarget();
@@ -105,7 +105,7 @@ export default function GamePage(){
     );
 }
 
-function useInterval(callback: any, delay: number | null) {
+function useInterval(callback: any, delay: number | null) { //https://overreacted.io/making-setinterval-declarative-with-react-hooks/
     const savedCallback:any = useRef();
   
     // Remember the latest callback.
