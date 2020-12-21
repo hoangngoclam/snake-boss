@@ -29128,6 +29128,14 @@ video {
   animation: bounce 1s infinite;
 }
 
+.box{
+  position:absolute;
+  top:0px;
+  right:0px;
+  bottom:0px;
+  left:0px;
+}
+
 table#custom {
   border-collapse: collapse;
   width: 100%;

@@ -42,7 +42,7 @@ export default function HeaderComponent() {
     const [avatarUrl, setAvatar] = useState(GetAvatarUrl);
     const [displayName, setDisplayName] = useState(GetDisplayName);
     return (
-        <header className="w-full">
+        <header className="w-full" id="header">
             <nav className="flex flex-row justify-between bg-pink-500">
                 <Link className="logo my-2 mx-5 hover:opacity-90 " to="/">
                     <img src="/imgs/logo.jpg" className="w-12 rounded-full" alt="Logo" />

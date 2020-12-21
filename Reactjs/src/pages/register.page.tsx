@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { Alert } from 'reactstrap';
 import { ButtonSubmitComponent, InputComponent } from '../components';
-import { API } from '../helper';
+import { API, HelperFunction } from '../helper';
 
 export default function RegisterPage() {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [errorEmail, setErrorEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [errorLabel, setError] = useState('');
     const [isRegisterSuccess, setRegisterStatus] = useState(false);
 
+    useEffect(() => {
+        document.onkeydown = (e: any) => {
+            e = e || window.event;
+            if (e.keyCode === 13) {
+                submitForm();
+            }
+        };
+    }, []);
+
     const onSubmitClick = (_event: any) => {
+        submitForm();
+    };
+    const submitForm = () => {
+        if (errorEmail !== '' || name === '') {
+            return;
+        }
         if (password !== confirmPassword) {
             setError('Password must be the same as confirm');
             return;
@@ -42,12 +58,34 @@ export default function RegisterPage() {
             });
     };
 
+    const checkemailExist = (email: string): Promise<boolean> => {
+        return API.Get(`http://localhost:5000/user/check-email?email=${email}`)
+            .then((result: any) => {
+                return result.data.success;
+            })
+            .catch(() => {
+                return false;
+            });
+    };
+
     const onNameChange = (_event: any) => {
         setName(_event.target.value);
         setError('');
     };
     const onEmailChange = (_event: any) => {
-        setEmail(_event.target.value);
+        const email = _event.target.value;
+        if (!HelperFunction.validateEmail(email)) {
+            setErrorEmail('This is not an email');
+        } else {
+            checkemailExist(email).then((result: boolean) => {
+                if (result) {
+                    setErrorEmail('This email is exist');
+                } else {
+                    setErrorEmail('');
+                }
+            });
+        }
+        setEmail(email);
         setError('');
     };
     const onPasswordChange = (_event: any) => {
@@ -87,6 +125,7 @@ export default function RegisterPage() {
                             type="email"
                             placeholder="Email"
                             value={email}
+                            error={errorEmail}
                             onChangeEvent={onEmailChange}
                         />
                         <InputComponent

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { InputComponent, ButtonSubmitComponent } from './../components/index';
 import { Link } from 'react-router-dom';
 import { Alert } from 'reactstrap';
-import { API } from './../helper';
+import { API, HelperFunction } from './../helper';
 
 export default function LoginPage(props: any) {
     const [errorLabel, setError] = useState('');
@@ -43,13 +43,9 @@ export default function LoginPage(props: any) {
                 });
         }
     };
-    function validateEmail(email: string) {
-        const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        return regex.test(email);
-    }
     const onEmailChange = (_event: any) => {
         setEmail(_event.target.value);
-        if (!validateEmail(_event.target.value)) {
+        if (!HelperFunction.validateEmail(_event.target.value)) {
             setEmailError('This is not an email');
         } else {
             setEmailError('');
