@@ -60,3 +60,9 @@ Import file **/Snake.postman_collection.json** in root to show the API
  - **/profile:** Edit profile player
  - **/admin/login:** Login into admin page (admin/password)
  - **/user-admin:** Page show all player create in website
+ 
+ ## Layout same like this
+<img width="1552" alt="Screen Shot 2022-10-01 at 22 10 44" src="https://user-images.githubusercontent.com/26401817/193416279-c61d449b-2bac-4bb1-aa49-f297a6fce141.png">
+<img width="1552" alt="Screen Shot 2022-10-01 at 22 10 36" src="https://user-images.githubusercontent.com/26401817/193416287-3bc6f18a-d731-4d69-9e86-26c494ed0b6d.png">
+<img width="1552" alt="Screen Shot 2022-10-01 at 22 10 20" src="https://user-images.githubusercontent.com/26401817/193416290-eeb16037-fc0a-4a41-a295-efa5d6f0f714.png">
+<img width="1552" alt="Screen Shot 2022-10-01 at 22 09 53" src="https://user-images.githubusercontent.com/26401817/193416292-fc0d4e9b-5d87-40d3-8498-1625a06d4d17.png">
