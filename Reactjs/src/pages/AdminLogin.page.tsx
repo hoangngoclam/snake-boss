@@ -11,7 +11,7 @@ export default function AdminLoginPage(props: any){
     const [password, setPassword] = useState("");
     const onSubmitClick = (_event: any)=>{
         let data:IDataPostLogin = {userName:userName, password: password};
-        API.Post("http://localhost:5000/admin/login",data)
+        API.Post("http://localhost:5001/admin/login",data)
         .then((result: any)=>{
             let dataResult = result.data as IDataReceiveLoginAdmin;
             if(dataResult.success === false){

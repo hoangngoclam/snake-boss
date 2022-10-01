@@ -10,6 +10,11 @@ Use the package manager [npm](https://www.npmjs.com/) to install program.
 ```bash
 $ npm install
 ```
+If you run in MacOS M1 Run this
+
+```bash
+$ npm install --platform=darwin --arch=x64 sharp && npm install
+```
 ### 1. Run server
 **Run server in local**
 ```bash
@@ -23,7 +28,7 @@ $ npm run build
 ```bash
 $ npm start
 ```
-Server will run in port 5000
+Server will run in port 5001
 
 ### 1. Run web client
 **Cd in to Reactjs folder by this command**
@@ -34,6 +39,12 @@ $ cd Reactjs
 ```bash
 $ npm install
 ```
+If you run in MacOS M1 Run this
+
+```bash
+$ npm install --save-dev sass && npm install
+```
+
 **Run client**
 ```bash
 $ npm start

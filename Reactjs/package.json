@@ -16,10 +16,9 @@
     "bootstrap": "^4.5.3",
     "eslint": "^7.14.0",
     "global": "^4.4.0",
-    "node-sass": "4.14.1",
     "postcss": "8",
     "prettier": "^2.2.1",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
@@ -56,6 +55,7 @@
     "@types/reactstrap": "^8.7.2",
     "autoprefixer": "^10.0.4",
     "postcss-cli": "^8.3.0",
-    "reactstrap": "^8.7.1"
+    "reactstrap": "^8.7.1",
+    "sass": "^1.55.0"
   }
 }

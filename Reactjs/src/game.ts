@@ -96,9 +96,11 @@ class Game{
         if (Game.snakeX < 0 || Game.snakeY < 0 || Game.snakeX >= Game.boardWidth || Game.snakeY >= Game.boardHeight) {
             let currentUser: any = JSON.parse(localStorage.getItem('user') || 'null');
             let data = {userId:currentUser.id, score: Game.score}
-            API.Post('http://localhost:5000/match',data)
-            .then(ressult=>{console.log(ressult)})
-            .catch(error=>console.log(error))
+            API.Post('http://localhost:5001/match', data)
+                .then((ressult) => {
+                    console.log(ressult);
+                })
+                .catch((error) => console.log(error));
 
             setTimeout(() => {
                 window.location.reload();
@@ -109,9 +111,11 @@ class Game{
         if (Game.board[Game.snakeY][Game.snakeX].snake > 0) {
             let currentUser: any = JSON.parse(localStorage.getItem('user') || 'null');
             let data = {userId:currentUser.id, score: Game.score}
-            API.Post('http://localhost:5000/match',data)
-            .then(ressult=>{console.log(ressult)})
-            .catch(error=>console.log(error))
+            API.Post('http://localhost:5001/match', data)
+                .then((ressult) => {
+                    console.log(ressult);
+                })
+                .catch((error) => console.log(error));
             setTimeout(() => {
                 window.location.reload();
             }, 2000);

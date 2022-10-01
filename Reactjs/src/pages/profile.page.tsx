@@ -28,13 +28,13 @@ export default function ProfilePage(props: any){
     useEffect(()=>{
         try {
             let currentUser: any = JSON.parse(localStorage.getItem('user') || 'null');
-            API.Get("http://localhost:5000/user/"+currentUser.id)
+            API.Get("http://localhost:5001/user/"+currentUser.id)
             .then((result: any)=>{
                 let dataResult = result.data.user as IUserModel;
                 setUserInfo(dataResult);
                 setDisplayName(dataResult.displayName);
                 setPassword(dataResult.password);
-                setImageUrl(`http://localhost:5000/imgs/${dataResult.avatarUrl}`)
+                setImageUrl(`http://localhost:5001/imgs/${dataResult.avatarUrl}`)
             })
         } catch (error) {
             localStorage.removeItem('user');
@@ -58,7 +58,7 @@ export default function ProfilePage(props: any){
         bodyFormData.append("displayName",displayName);
         bodyFormData.append("changePassword", changePassword?"1":"0");
         bodyFormData.append("password",password);
-        let result: any = await API.PostFormData("http://localhost:5000/user/edit",bodyFormData).catch(e=>{
+        let result: any = await API.PostFormData("http://localhost:5001/user/edit",bodyFormData).catch(e=>{
             setError("Save profile error");
         });
         let dataResult =  result.data as ISaveProfileData
@@ -74,7 +74,7 @@ export default function ProfilePage(props: any){
             setImageUrl(data);
             setAvatarUpload(files[0]);
         } catch (error) {
-            setImageUrl(`http://localhost:5000/imgs/default.jpg`);
+            setImageUrl(`http://localhost:5001/imgs/default.jpg`);
         }
         
     }

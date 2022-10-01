@@ -11,15 +11,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/user",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"user"
-					]
-				}
+                    "raw": "localhost:5001/user",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["user"]
+                }
 			},
 			"response": []
 		},
@@ -29,15 +25,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/user-rate",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"user-rate"
-					]
-				}
+                    "raw": "localhost:5001/user-rate",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["user-rate"]
+                }
 			},
 			"response": []
 		},
@@ -72,16 +64,11 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:5000/user/register",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"user",
-						"register"
-					]
-				}
+                    "raw": "localhost:5001/user/register",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["user", "register"]
+                }
 			},
 			"response": []
 		},
@@ -106,16 +93,11 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:5000/user/login",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"user",
-						"login"
-					]
-				}
+                    "raw": "localhost:5001/user/login",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["user", "login"]
+                }
 			},
 			"response": []
 		},
@@ -155,16 +137,11 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:5000/user/edit",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"user",
-						"edit"
-					]
-				}
+                    "raw": "localhost:5001/user/edit",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["user", "edit"]
+                }
 			},
 			"response": []
 		},
@@ -189,15 +166,11 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:5000/match",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"match"
-					]
-				}
+                    "raw": "localhost:5001/match",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["match"]
+                }
 			},
 			"response": []
 		},
@@ -207,16 +180,11 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:5000/user/1",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"user",
-						"1"
-					]
-				}
+                    "raw": "localhost:5001/user/1",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["user", "1"]
+                }
 			},
 			"response": []
 		},
@@ -241,16 +209,11 @@
 					]
 				},
 				"url": {
-					"raw": "localhost:5000/admin/login",
-					"host": [
-						"localhost"
-					],
-					"port": "5000",
-					"path": [
-						"admin",
-						"login"
-					]
-				}
+                    "raw": "localhost:5001/admin/login",
+                    "host": ["localhost"],
+                    "port": "5001",
+                    "path": ["admin", "login"]
+                }
 			},
 			"response": []
 		}

@@ -2,7 +2,6 @@ import Database from 'database';
 import * as express from 'express';
 import { Request, Response } from 'express';
 import AdminModel from 'models/admin.model';
-import MathModel from 'models/math.model';
 
 class AdminController implements IControllerBase {
     public router = express.Router();

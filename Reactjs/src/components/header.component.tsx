@@ -22,7 +22,7 @@ export default function HeaderComponent(){
     const [avatarUrl, setAvatar] = useState('/imgs/default.jpg');
     useEffect(()=>{
         let currentUser: IUserModel = JSON.parse(localStorage.getItem('user') || 'null');
-        setAvatar(`http://localhost:5000/imgs/${currentUser.avatarUrl}`);
+        setAvatar(`http://localhost:5001/imgs/${currentUser.avatarUrl}`);
     },[]);
     return(
         <header className="w-full">

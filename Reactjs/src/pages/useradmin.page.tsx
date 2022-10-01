@@ -5,7 +5,7 @@ import { API } from "../helper";
 export default function UserAdminPage(){
     const[players,setPlayers]:[IUserModel[],Function] = useState([]);
     useEffect(()=>{
-        API.Get("http://localhost:5000/user-rate")
+        API.Get("http://localhost:5001/user-rate")
         .then((result: any)=>{
             let dataResult = result.data.users as IUserModel[];
             setPlayers(dataResult);

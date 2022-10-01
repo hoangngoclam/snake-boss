@@ -18,7 +18,7 @@ export default function RegisterPage(){
             return 
         }
         let data:IDataPostRegister = {email:email, password: password, displayName: name, confirmPassword: confirmPassword};
-        API.Post("http://localhost:5000/user/register",data)
+        API.Post("http://localhost:5001/user/register",data)
         .then((result: any)=>{
             let dataResult = result.data as IDataReceiveLogin;
             if(dataResult.success === false){

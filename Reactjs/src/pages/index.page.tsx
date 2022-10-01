@@ -6,7 +6,7 @@ export default function IndexPage(){
     const [users, setUsers]:[IUserModel[],Function] = useState([]);
     const [loadGame,setLoadGame] = useState(false);
     useEffect(()=>{
-        API.Get("http://localhost:5000/user-rate")
+        API.Get("http://localhost:5001/user-rate")
         .then((result: any)=>{
             let dataResult = result.data.users as IUserModel[];
             setUsers(dataResult);
